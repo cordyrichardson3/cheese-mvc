@@ -5,9 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
 @Controller
@@ -41,6 +39,20 @@ public class CheeseController {
         return "redirect:";
 
     }
+
+    @RequestMapping(value="remove", method=RequestMethod.GET)
+    public String removeCheese(Model model){
+        model.addAttribute("title", "Remove A Cheese");
+        model.addAttribute("cheeses", cheeses);
+        return "cheese/remove";
+    }
+
+    @RequestMapping(value="remove", method=RequestMethod.POST)
+    public String processRemoveCheeseForm(@RequestParam String cheesename){
+        cheeses.remove(cheesename);
+        return "redirect:";
+    }
+
 
 
 

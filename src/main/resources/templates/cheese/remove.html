@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org/">
+<head th:replace="fragments::head"></head>
+<body>
+<h1 th:text="${title}">My Cheeses Default</h1>
+<nav th:replace="fragments::navigation"></nav>
+
+
+<p th:replace="fragments::empty_list_message"></p>
+
+<form method="post" th:if="${cheeses} and ${cheeses.size()}">
+    <select name="cheesename">
+        <option th:each="cheese: ${cheeses}"
+                th:text="${cheese}"
+                th:value="${cheese}">
+
+        </option>
+    </select>
+    <br><br>
+    <input type="submit">
+</form>
+</body>
+</html>
