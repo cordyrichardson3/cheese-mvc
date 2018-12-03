@@ -10,9 +10,14 @@
 
 <form method="post" th:if="${cheeses} and ${cheeses.size()}">
     <select name="cheesename">
+ <!--       <option th:each="cheese: ${cheeses}"
+                th:text="${cheese.key}"
+                th:value="${cheese.key}">
+                -->
+
         <option th:each="cheese: ${cheeses}"
-                th:text="${cheese}"
-                th:value="${cheese}">
+                th:text="${cheese.name}"
+                th:value="${cheese.name}">
 
         </option>
     </select>
